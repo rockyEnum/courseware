@@ -1,0 +1,50 @@
+
+svn 是一个集中式管理系统
+    有一个中央服务器 ，每个人开发都需要从中央服务器 获取代码
+    然后改完之后，提交到中央服务器
+    一旦服务器挂了 a 和b就没办法开发了
+    如果你的网速比较慢 ，上传的文件又比较大的情况下  svn就特别慢
+
+
+git 分布式一个项目管理系统
+   备份文件   记录历史  回滚(回到之前提交的版本)   共享   团队开发
+   看别人的开源代码 ，开发自己的项目
+   分布式 ：就是没有中央服务器 ，a本地有一个完整的版本库
+   也是需要一个中央服务器    方便 每个人进行交换
+   git 不需要联网
+
+   在工作区
+   git add .   //添加到 缓存区(暂存区)
+   git commit -m  //提交到历史区
+   git push   推送到远程
+   git pull //
+
+git config --global(全局) user.name ''
+git config --global  user.email ''
+
+git add ./-A /具体的文件   提交我所有的新增和修改的文件
+git add index.html  添加的只是index.html文件 添加到暂存区
+
+git commit -m '说明'
+git status  //查看 比较暂存区和工作区不同的文件  显示的是被修改的文件列表
+git diff file(文件路径)  查看暂存区和工作区具体文件修改了哪些内容
+git diff --cached 查看历史区 和暂存区有区别的内容
+git diff  master
+git log  查看历史记录
+git log --oneline  每一个历史记录只显示一行
+
+git pull 拉取远程代码并且合并代码
+git fetch  拉取代码，但是不进行合并
+git merge  合并代码   <<<  =====代码  >>>
+有冲突情况下 需要手动合并 git merge   冲突块格式  <<<  =====代码  >>>
+
+回滚代码reset 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
+git  reset -mixed 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
+git reset -soft 回滚到某个版本   回退到历史区  工作区和暂存区不变
+git reset -hard 彻底回滚  历史区 暂存区  都撤回来
+
+git  reset -hard HEAD~ 回滚到上一个历史区的版本
+git  reset -hard  a0905f1a5f1a7d107bb7bbb5e170340d0512f8d8 回滚到指定的版本
+
+
+

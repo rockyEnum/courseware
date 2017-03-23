@@ -1,0 +1,24 @@
+github    https://github.com/
+是一个网站 是托管代码一个平台， 是基于git进行管理的平台
+是在全国都是比较权威的，我们所需要的框架，插件 ，jquery 的源代码在这上面都有托管 所以说在github上搜到比较好的项目 记得fork下
+以后慢慢研究
+
+github 发布静态的前端项目，本身就是一个资源文件的托管平台
+需要我们把项目文件上传到这个平台，平台帮我们发布，生成的是一个可以看效果的地址
+github上 采用的是markdown语法
+
+.gitignore   里面放的是排除你不需要用git提交的文件/文件夹 路径 .idea
+
+echo "# myView" >> README.md  把# myView 添加到README.md里面(不存在文件则创建)
+
+git init  初始化仓库
+git add README.md   add  添加文件README.md 缓存区
+git commit -m "first commit"  //提交  commit -m "说明" 历史区
+// 和远程仓库建立连接
+git remote add origin https://github.com/rockyEnum/myView.git
+git push -u origin master  推送到一个默认主分支master上面
+
+另外一种  git clone https://github.com/rockyEnum/myView.git
+ git  add .
+ git commit -m ''
+ git push （主分支master）
