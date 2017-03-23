@@ -41,10 +41,10 @@ git merge  合并代码   <<<  =====代码  >>>
 回滚代码reset 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
 git  reset -mixed 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
 git reset -soft 回滚到某个版本   回退到历史区  工作区和暂存区不变
-git reset -hard 彻底回滚  历史区 暂存区  都撤回来
+git reset --hard 彻底回滚  历史区 暂存区  都撤回来
 
-git  reset -hard HEAD~ 回滚到上一个历史区的版本
-git  reset -hard  a0905f1a5f1a7d107bb7bbb5e170340d0512f8d8 回滚到指定的版本
+git  reset --hard HEAD~ 回滚到上一个历史区的版本
+git  reset --hard  a0905f1a5f1a7d107bb7bbb5e170340d0512f8d8 回滚到指定的版本
 
 
 
