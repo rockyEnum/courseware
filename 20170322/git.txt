@@ -16,8 +16,8 @@ git 分布式一个项目管理系统
    在工作区
    git add .   //添加到 缓存区(暂存区)
    git commit -m  //提交到历史区
+   git pull //从远程拉取 并且合并
    git push   推送到远程
-   git pull //
 
 git config --global(全局) user.name ''
 git config --global  user.email ''
@@ -32,19 +32,34 @@ git diff --cached 查看历史区 和暂存区有区别的内容
 git diff  master
 git log  查看历史记录
 git log --oneline  每一个历史记录只显示一行
-
+git log -p -2  -p 显示每次提交的内容差异 -2显示最近提交的两次
 git pull 拉取远程代码并且合并代码
 git fetch  拉取代码，但是不进行合并
 git merge  合并代码   <<<  =====代码  >>>
 有冲突情况下 需要手动合并 git merge   冲突块格式  <<<  =====代码  >>>
 
 回滚代码reset 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
-git  reset -mixed 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
-git reset -soft 回滚到某个版本   回退到历史区  工作区和暂存区不变
+git  reset --mixed 回滚到某个版本 ，工作区是不变的 回退历史区 和暂存区
+git reset --soft 回滚到某个版本   回退到历史区  工作区和暂存区不变
 git reset --hard 彻底回滚  历史区 暂存区  都撤回来
 
 git  reset --hard HEAD~ 回滚到上一个历史区的版本
 git  reset --hard  a0905f1a5f1a7d107bb7bbb5e170340d0512f8d8 回滚到指定的版本
+git  reset --hard  bbd0955
+git commit -A -m '' // 添加早暂存区并且提交到历史区
 
+git checkout  file 丢掉工作区的修改
+git checkout 分支名  切换分支
+git checkout -b 分支名  创建分支并且切换到 该分支上
+
+git rm file  //删除暂存区里的文件 (前提是本地要把这个文件删除)
+git rm -f file // 把添加到缓存区的文件和本地该文件一并删除
+git rm --cached file // 历史区的替换调缓存区的文件
+
+
+场景一: 当你该乱了工作区某个文件 ，想丢掉工作区的修改 ，git checkout file
+场景二: 当你该乱了工作区某个文件，但是呢你提交到暂存区了，想丢掉  第一步 git reset --hard file  第二步执行场景1的操作
+场景三：你已经推送了，想要撤销
+ git reset --hard commit id
 
 
