@@ -7,7 +7,11 @@
 
 适配
   1：流式布局 @media 通过媒体查询来实现 @media screen and (min-width: 414px)
+      最外层盒子宽度是百分比  高度  margin padding 都是按照设计稿写死的  里面的宽度也是写死的
+      展示不好的地方，进行media查询
   2:rem适配 给html 设置fontSize =100px
               body里 width:1rem
      em
   3:缩放式布局  scale
+  4:百分比布局
+

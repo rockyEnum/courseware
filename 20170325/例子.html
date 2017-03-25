@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+
+        h3,p{
+            margin:0;
+            padding:0;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .posts{
+            width: 930px;
+            margin: auto;
+            font: 300 1em/1.8 "PingFang SC","Lantinghei SC","Microsoft Yahei","Hiragino Sans GB","Microsoft Sans Serif","WenQuanYi Micro Hei",sans;
+        }
+        .posts .mod-post{
+            float: left;
+            width: 280px;
+            height: 204px;
+            box-sizing: border-box;
+            margin: 0 20px 20px 0;
+        }
+        .mod-post a{
+            width: 100%;
+            display: block;
+        }
+        .mod-post-cover{
+            height: 113px;
+            overflow: hidden;
+        }
+
+        .mod-post-cover img{
+            display: block;
+            width: 100%;
+        }
+        .mod-post-info .mod-post-tit{
+            height: 24px;
+            margin-bottom: 5px;
+            line-height: 24px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 100;
+        }
+        .mod-post-desc{
+            height: 40px;
+            line-height: 20px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient:vertical;
+            word-wrap: break-word;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 1014px){
+            .mod-post,.mod-post-cover{
+                height: auto;
+
+            }
+            .posts {
+                width: 100%
+            }
+            .posts .mod-post{
+                float: none;
+                width: auto;
+                margin:0 20px 20px 0;
+                height:auto;
+            }
+        }
+    </style>
+</head>
+<body>
+ <div id="posts" class="posts">
+     <div id="mod-post" class="mod-post">
+         <a href="">
+             <div class="mod-post-cover">
+                 <img src="img/img1.png" alt="">
+             </div>
+             <div class="mod-post-info">
+                 <h3 class="mod-post-tit">
+                     轻氧 - React Native 安卓版 V1.0
+                 </h3>
+                 <p class="mod-post-desc">
+                     小伙伴们呼声很高的轻氧 APP 安卓版本正式发布啦，欢迎下载尝鲜体验
+                 </p>
+             </div>
+         </a>
+     </div>
+     <div   class="mod-post">
+         <a href="">
+             <div class="mod-post-cover">
+                 <img src="img/img2.jpg" alt="">
+             </div>
+             <div class="mod-post-info">
+                 <h3 class="mod-post-tit">
+                     “等一下，我碰！”——常见的2D碰撞检测
+                 </h3>
+                 <p class="mod-post-desc">
+                     小伙伴们呼声很高的轻氧 APP 安卓版本正式发布啦，欢迎下载尝鲜体验
+                 </p>
+             </div>
+         </a>
+     </div>
+     <div   class="mod-post">
+         <a href="">
+             <div class="mod-post-cover">
+                 <img src="img/img3.jpg" alt="">
+             </div>
+             <div class="mod-post-info">
+                 <h3 class="mod-post-tit">
+                     “等一下，我碰！”——常见的2D碰撞检测
+                 </h3>
+                 <p class="mod-post-desc">
+                     讲述了在 Web 开发中常见的几种 2D 碰撞检测，内含运行实例（基于 Canvas）、图片说明。
+                 </p>
+             </div>
+         </a>
+     </div>
+ </div>
+</body>
+</html>

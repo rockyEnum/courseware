@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        #box{
+            width:375px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    (function(desW){
+        //当前设备的宽度
+        var domWidth = document.documentElement.clientWidth;
+        var box = document.getElementById("box");
+        var bili = domWidth*2/desW;
+        box.style.webkitTransformOrigin = " left top ";
+        box.style.webkitTransform = "scale("+bili+")";
+
+    })(750)
+</script>

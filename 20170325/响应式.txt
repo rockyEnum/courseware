@@ -1,0 +1,24 @@
+适配
+  1：流式布局 @media 通过媒体查询来实现 @media screen and (min-width: 414px)
+      最外层盒子宽度是百分比  高度  margin padding 都是按照设计稿写死的  里面的宽度也是写死的
+      展示不好的地方，进行media查询
+
+  2:缩放式布局  scale(耗性能) iphone6下 根据设计搞给咱们是多大的，咱们在布局的时候宽度就是多大
+ 在iphone6plus下 scale(414/375)
+  3:rem适配 给html 设置fontSize =100px
+               body里 width:1rem
+      rem 是相对于整个html进行设置的 html{fontSize =100px}
+      div{width:2rem}
+      em  是相对于父级进行设置的 div的父级 设置{fontSize =100px}
+       div{width:2em}
+  4:百分比布局
+
+
+ 设计稿
+ 一般ui给的设计稿都是在iphone下的设计图  750px 就是相对于 iphone6下的设计图
+ 为什么设计图要比手机大一倍呢
+  设计设计的图都是高清屏的图 因为iphone手机是二倍高清屏
+  我们在手机上看到的1px*1px的大小,相当于2px 2px的的大小
+  真实图片的一半 图片(106*106的) 在iphone6下咱们应该给这个图片设置53*53px
+
+
