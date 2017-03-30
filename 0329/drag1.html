@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+  <div id="box" draggable="true">box</div>
+  <div id="box2" >box2</div>
+</body>
+</html>
+<script>
+   //h5 拖拽事件
+    //todo 拖拽元素事件，事件对象为拖拽元素
+    //dragstart 拖拽刚触发的时候发生
+   //drag   推拽中触发  多次触发
+   //dragend 拖拽结束前触发
+   // todo 目标元素事件 ，事件对象为目标元素
+    // dragenter //进入目标元素时候触发
+    //dragover //在进入目标元素-离开目标元素之间触发 多次触发
+   //dragleave //离开目标元素触发
+   // drop  在目标元素上拖拽释放的时候触发
+    var box = document.getElementById("box");
+    var box2 = document.getElementById("box2");
+   var i = 0;
+    box.addEventListener("dragstart",function (e) {
+       console.log(e)
+    })
+   box.ondrag = function (e) {
+       //console.log(++i)
+   }
+   box.ondragend = function (e) {
+     // alert("释放了")
+   }
+   box2.ondragenter = function (e) {
+       this.style.background = "red"
+   }
+
+   box2.ondragover = function (e) {
+      // this.innerText = "进入目标元素-离开目标元素之间";
+       e.preventDefault(); //阻止默认行为才能触发ondrop
+
+   }
+   box2.ondragleave = function (e) {
+       this.innerText = '';
+       this.style.background = "white"
+   }
+   //阻止默认行为才能触发ondrop
+   box2.ondrop = function (e) {
+       this.innerText = '已经释放了';
+   }
+
+//    box.ondragstart = function () {
+//        alert(2)
+//    }
+</script>

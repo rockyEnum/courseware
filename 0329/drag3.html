@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            border: 1px solid;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+<div id="box" draggable="true">di1</div>
+<div id="box2"></div>
+<img id="timg" src="timg.jpg" style="width: 30px;height: 30px"  alt="">
+<form action="">
+    <input type="file" id="file" value="上传" multiple>
+</form>
+</body>
+</html>
+<script>
+    //拖拽 dataTranfer
+    //files 获取拖拽的文件列表 ，返回的是fileList
+   // type 文件类型
+   // FileReader //读取文件信息
+     var box = document.getElementById("box");
+    var box2 = document.getElementById("box2");
+    var img = document.getElementById('timg');
+    var file = document.forms[0].file;
+    var i = 0;
+    box.addEventListener("dragstart",function (e) {
+        console.log(e)
+        //在火狐下，一定要设置setData ，否则在火狐下不起作用
+        e.dataTransfer.setData('name','留');
+        e.dataTransfer.effectAllowed = 'link'
+        e.dataTransfer.setDragImage(img,20,20)
+    })
+    box2.ondragover = function (e) {
+        // this.innerText = "进入目标元素-离开目标元素之间";
+        e.preventDefault(); //阻止默认行为才能触发ondrop
+
+    }
+    box2.ondragleave = function (e) {
+        this.innerText = '';
+        this.style.background = "white"
+    }
+    file.onchange = function (e) {
+        e.preventDefault();//阻止默认行为，才能松开拖拽的文件的时候阻止打开文件
+        this.innerText = '已经释放了';
+        var files = e.dataTransfer.files;
+        for(var i = 0 ;i<files.length;i++){
+              var cur = files[i];
+            if(cur.type.indexOf('image')==-1){
+                 alert("请上传图片类型的文件");
+                return;
+            }
+            var read = new FileReader();
+            read.readAsDataURL(cur);
+            read.onload = function (e) {
+                alert(this.result)
+                var img = document.createElement("img");
+                img.src = this.result;
+                img.style= "width:100px;height:100px;"
+                document.body.appendChild(img);
+            }
+
+        }
+    }
+</script>
