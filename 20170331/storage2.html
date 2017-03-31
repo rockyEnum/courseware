@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //当有新的key 或者/value存储的时候才回发生变化
+    window.addEventListener("storage",function (e) {
+        console.log(e.key) //键名
+        console.log(e.oldValue) //键名对应的之前的那个value
+        console.log(e.newValue) //键名对应的新值value
+    })
+</script>

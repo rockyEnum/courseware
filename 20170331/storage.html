@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //永久存储
+    localStorage.setItem("name","han")
+    //当页面关闭后session就失效了
+    sessionStorage.setItem("name","han")
+
+    localStorage.getItem("name");
+    //如果想存储对象的话 需要通过JSON.stringify 转成json字符串
+    // 取的时候 通过JSON.parse（）转成json对象
+    localStorage.person = "父类"
+    localStorage.getItem("person");
+    //效果是一样的
+    localStorage.person  //只能放具体的属性(键)名
+    var  a  ="person";
+    localStorage[a] //方参数
+
+    localStorage.removeItem("person") //移除某一个key
+    sessionStorage.removeItem("key")
+    sessionStorage.clear(); //清除
+    localStorage.clear() //清除所有存储的信息
+</script>

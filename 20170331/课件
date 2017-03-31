@@ -1,0 +1,21 @@
+怎么在手机上看咱们写的页面
+1:同一个无线网
+2:打开页面http://localhost:63342/courseware/20170331/position.html
+3: window下打开命令 运行-cmd - ipconfig 查看端口号
+ 在手机浏览器里面 输入 http://192.168.1.102:63342/courseware/20170331/position.html
+ 或者把这个地址在草料(网站)里面生成一个二维码
+1:h5 定位功能(获取当前位置信息)
+一般做app 的时候 咱们写的h5页面都是靠安卓、ios去打开的
+包括定位 打开手机里的功能(相机 二维码)
+当前所在的城市
+2:本地存储 cookie
+    cookie    sessionId (用户信息存在服务器端的)
+    localStorage 可以跨页面通讯
+    sessionstorage
+  cookie
+    操作麻烦 cookie 存储能力小 小于4k 每次发送http请求的时候都是会传cookie的  document.cookie = 'express='+new Date().getTime()-3600 设置cookie的有效时间，如果值为过去的一个时间 则cookie失效
+ storage 存储4Mb
+   web workers  新增一个线程
+3:websocket 实时通讯
+
+4: 离线缓存

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<title>Title</title>
+</head>
+<body>
+<input type="button" value="获取定位" onclick="getPosition()">
+</body>
+</html>
+<script>
+    function getPosition() {
+        //获取用户当前位置信息 ，会询问你是否同意
+        navigator.geolocation.getCurrentPosition(function (result) {
+            console.log(result.latitude) //获取当前用户的纬度
+            console.log(result.longitude)//获取当前用户的经度
+//        result.altitude  //海拔高度/null当
+//        result.altitudeAccuracy //获取当前用户的经纬度的精度
+        },function (error) {
+            //code //失败的状态码 code:1 代表用户拒绝提供位置信息
+            // 2 没有获取到位置信息
+            //3 获取位置信息超时
+            console.log(error.code,error.message)
+        },{
+        timeout:2000//超时时间2s
+//        maximumAge:20000, //缓存获取当前位置信息的时间
+//        enableHighAcuracy:true //是否获取高精度的用户位置信息 一般采用默认的，手机去调控的
+        })
+    }
+
+   var watchId = navigator.geolocation.watchPosition(function (result) {
+
+   },function () {
+
+   },{})
+
+    navigator.geolocation.clearWatch(watchId);
+
+    navigator.onLine //判断当前页面是否在线(是否能连上网) true false
+     window.addEventListener("online",function (e) {
+         
+     })
+    // 同源下 storage可以跨页面监听 (传递数据)
+</script>

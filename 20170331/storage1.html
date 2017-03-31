@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" onclick="setStorage()" value="存储localStorage">
+</body>
+</html>
+<script>
+    //点击的时候存储localStorage
+    var i = 0;
+    function setStorage() {
+        i++
+        localStorage.setItem("item"+i,i+2)
+    }
+</script>
