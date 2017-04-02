@@ -16,6 +16,9 @@
     操作麻烦 cookie 存储能力小 小于4k 每次发送http请求的时候都是会传cookie的  document.cookie = 'express='+new Date().getTime()-3600 设置cookie的有效时间，如果值为过去的一个时间 则cookie失效
  storage 存储4Mb
    web workers  新增一个线程
+     当某一个操作的时候，执行很耗时间的时候 js是单线程的 如果这个操作长时间就卡死了，这时候workers 就是让服务器开一个线程
+
+
 3:websocket 实时通讯
 
 4: 离线缓存

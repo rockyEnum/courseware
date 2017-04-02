@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="content">
+<input type="button" value="发送" onclick="postMsg()">
+<input type="button" value="关闭" onclick="closeWs()">
+</body>
+</html>
+<script>//http:ws https  wss
+    var ws = new WebSocket("ws://localhost:8080/");
+    //建立连接事件
+    ws.onopen = function (e) {
+        console.log("建立ok");
+        ws.send()
+    }
+    ws.onerror = function (ex) {
+
+    }
+    //监听消息
+    ws.onmessage = function (e) {
+        console.log(e.data)
+    }
+    ws.readyState // 0 正在链接中  1 建立链接  2  正在关闭中 3 已关闭
+var objCxt = document.getElementById("content");
+
+    //发送消息
+    function postMsg() {
+        ws.send(objCxt.value)
+    }
+    function closeWs() {
+       ws && ws.close();
+    }
+</script>

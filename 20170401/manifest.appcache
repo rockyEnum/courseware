@@ -1,0 +1,14 @@
+CACHE MANIFEST  告诉浏览器这个文件是配置离线缓存的
+# version 版本 1
+# Time: Fri Mar 10 2017 14:45:05 GMT+0800 (中国标准时间)
+CACHE:  可以写绝对路径，也可以写相对路径
+ server.js
+ img/*
+ product/computer.html
+ FALLBACK:
+ server.js  server2.js  第一个能连上服务器情况下我用第一个文件 ，连补上服务区情况下 采用server2.js
+
+ NETWORK : 不需要缓存的资源
+  work.js
+
+移动端的touch

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" manifest="manifest.appcache">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="work" onclick="getPost()">
+<input type="button" value="弹出" onclick="myAlert()">
+</body>
+</html>
+<script>
+
+    // 创建一个workers线程
+    var work = new Worker("work.js");
+    //监听消息  线程有没有给我发消息
+    work.onmessage = function (e) {
+      console.log(e.data)
+    }
+    function getPost() {
+              work.postMessage(12);
+    }
+    function myAlert() {
+        alert('弹出')
+    }
+
+</script>
