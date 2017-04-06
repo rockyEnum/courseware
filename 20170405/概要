@@ -1,0 +1,37 @@
+在移动端只有触摸touch事件 没有鼠标事件
+但是也可以用鼠标事件 click keydown keyup
+用click 在移动端是有一个延迟的 300ms的一个延迟
+
+手写touch事件
+ touchstart touchmove touchend 触摸结束    触摸被中断的时候touchcancle
+
+ //一般在移动端 当偏移量大于30px的时候是移动，小于30px的是点击
+
+ 一般用插件来解决300ms延迟的问题 fastclick.js
+
+ window.addEventListener('load', function() {
+   FastClick.attach(document.body);
+ }, false);
+
+ // 移动端和pc端不一样，动画也不一样 translate(位移)  pc端 jq 动画里用的是定位  left  top
+ 移动端 ios 和安卓 的浏览器都是webkit 内核 在移动端js基本上没有兼容性
+ // 移动端事件
+ //有单手指事件 touchstart touchmove touchend 触摸结束    触摸被中断的时候touchcancle
+ // 多手指头事件 缩放 放大，旋转  gesturestart   gesturemove gestureend 来模拟 targetTouches
+ // 重力感应  ， 屏幕的旋转
+
+ //zepto.js  轻量级的jq，针对于移动端的 可以解决300ms的延迟
+ 用法和jq是一样的
+//绑定的click zepto会转成touch 模拟点击
+//zepto 和jq 区别
+    zepto 轻量级的jq ,只能用于移动端
+    zetpo 和jq处理动画不一样 jq 是通过定位来实现的动画
+    zetpo是通过css3的animate 来实现的
+    zetpo 提供了移动端的 touch 手指触摸事件
+
+    轮播图的插件 swipper.js  常用的触摸滑屏插件  iscroll.js
+
+    //less 或者sass
+    安装  首先要把node安装 https://nodejs.org/en/ downloads 里下载
+    // node -v;
+    安装less  npm install -g

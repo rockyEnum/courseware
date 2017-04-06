@@ -1,0 +1,43 @@
+@color: red;
+//.box{
+//  color:@color;
+//  background: white;
+//  whith:200px;
+//}
+///* 混合写法 .box 就相当于我复制了。box{}里面所有的样式*/
+//.content{
+//  .box;/* color:@color;
+//  background: white;
+//  whith:200px;*/
+//}
+///* 嵌套写法*/
+////.box{
+////  width: 200px;
+////  height: 200px;
+////}
+////.box .slide{
+////  font-size: 12px;
+////}
+//.box{
+//  width: 200px;
+//  height: 200px;
+//  .slide{
+//    font-size: 12px;
+//  }
+//}
+////&  是当前{}外的那个对象   =>.clear
+//.clear{
+//   display: block;
+//  &:after{
+//    content: "";
+//    clear: both;
+//    display: block;
+//   }
+//}
+@wd:200px;//定义默认的一个宽度
+//@filter:10%;
+@filter:0.1;
+.box{
+  width: @wd*2;
+  opacity: @filter*2;
+}

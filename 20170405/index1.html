@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <title>Title</title>
+    <script src="../node_modules/fastclick/lib/fastclick.js"></script>
+</head>
+<body>
+<input id="btnAlert" type="button" onclick="toAlert()" ondblclick="" value="点击">
+<div id="box" style="width: 100px;height: 100px;border: 1px solid;">
+
+</div>
+</body>
+</html>
+<script>
+    var startPageX,startPageY;
+    var endPageX,endPageY;
+//    var t1,t2;
+//  var oBtn = document.getElementById("btnAlert");
+//    oBtn.addEventListener("touchstart",function (e) {
+//        console.log(e.pageX)
+//        console.log( Number(new Date()))
+//    })
+//      oBtn.addEventListener("touchmove",function (e) {
+//          console.log(2)
+//      });
+//  oBtn.addEventListener("touchend",function (e) {
+//      console.log(t1=Number(new Date()))
+//  })
+var obox = document.getElementById("box");
+    obox.addEventListener("touchstart",function (e) {
+        var touch = e.targetTouches[0]
+        console.log(startPageX = touch.pageX)
+        console.log(startPageY - touch.pageY)
+    });
+    obox.addEventListener("touchmove",function (e) {
+        var touch = e.targetTouches[0]
+        endPageX = touch.pageX;
+        endPageY = touch.pageY;
+    })
+    obox.addEventListener("touchend",function (e) {
+        console.log(endPageX)
+        console.log(endPageY)
+        if(endPageY-startPageY<30 && endPageX - startPageX<30 ){
+            //执行click事件的操作
+        }
+    })
+    //在做移动端页面的时候才会用到，把页面里面所有click的事件转成touch 模拟的点击事件 好处是解决了300ms的延迟
+    window.addEventListener('load', function() {
+        FastClick.attach(document.body);
+    }, false);
+</script>
