@@ -1,0 +1,77 @@
+/* less 是一个动态的样式表语言，定义了一些方法函数，在开发中写css比较便于维护，扩展
+  css
+*/
+@import "home";
+@color:red; // 声明一个变量/常量  关键字@
+.head{
+  color:@color;
+  background: orange;
+}
+/* 嵌套*/
+.content{
+   .head;
+  &:after{
+     display: block;
+     clear: both;
+     content: '';
+  }
+}
+
+
+/* 嵌套 冒泡*/
+.slide{
+   border: 1px solid;
+   height: 100px;
+   @media screen {
+      width: 100%;
+      @media (max-width: 500px) {
+         width:500px;
+      }
+   }
+}
+/* 加减乘除*/
+@sum:100px+100px;
+//percentage 数字转化成百分比
+.total_sum{
+  width: @sum*2-2;
+  height: percentage(0.3);
+  color:  #CC5257 ;
+  background: saturate(#CC5257,70%);
+}
+.bundle{
+  .button{
+    width:100px;
+    height: 200px;
+    :hover{
+      color:blue;
+    }
+  }
+}
+.header{
+  .bundle > .button;/*这是一个整体*/
+}
+/*在最外层去找变量 如果有相同的采用最后一个，在往里一层去找这个变量，采用最里面的*/
+//就近原则
+@a:red;
+.page{
+  @a:green; //如果同一个级别下有相同变量，采用最后一个
+  color:@a;//blue
+ @a:blue;
+}
+@a:white;
+@base:"img/";
+@color:color;
+div{
+  background: url("@{base}1.jpg");/*img/1.jpg*/
+  @{color}:red;// color:red
+}
+
+@fnord:  "I am fnord.";
+@var:    "fnord";
+span{
+  content: @@var; //把字符串变成变量去解析
+}
+
+
+
+
