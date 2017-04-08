@@ -1,0 +1,11 @@
+.container 容器
+有固定宽度同时支持适配
+屏幕宽度 大于1200px   container   1170px
+         1200px 992px   container 970px
+         992    768     container 750px
+         小于768px下    container auto;
+
+container-fluid 占满整个容器 width:100%
+12
+
+col-lg- 只有在当前屏幕大于1200px才起作用
