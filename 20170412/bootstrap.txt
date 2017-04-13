@@ -1,0 +1,20 @@
+ col-lg-offset-   在大屏幕下  设置div偏移多少
+ col-md-offset-   在中等屏幕下 设置div偏移多少
+ col-sm-offset-   平板电脑上面
+ 不存在 //col-sx-offset-  在手机上设置偏移度
+ col-lg-pull-2  在大屏幕下设置 right  向左移动2/12 的距离
+ col-md-pull-2  设置 right  向左移动2/12 的距离
+ col-sm-pull-2  设置 right  向左移动2/12 的距离
+ col-sx-pull-2  在手机上设置 right  向左移动2/12 的距离
+
+ table    给表格 加一些默认样式
+ table-hover  鼠标移动到table上的效果
+ table-condensed  让表格列更加紧凑  除去 padding
+
+ .active	鼠标悬停在行或单元格上时所设置的颜色
+ .success	标识成功或积极的动作
+ .info	标识普通的提示信息或动作
+ .warning	标识警告或需要用户注意
+ .danger	标识危险或潜在的带来负面影响的动作
+
+ btn-success

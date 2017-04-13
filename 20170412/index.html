@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        div[class^="col-lg-"]{
+            height: 100px;
+            border: 1px solid blue;
+        }
+        @media screen and (min-width: 1200px) {
+            [class^="col-xs-"]{
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+        <!--<div class="col-xs-2">功能</div>-->
+      <!--<div class="col-lg-3 col-md-3 col-xs-2"></div>-->
+      <!--<div class="col-lg-3 col-md-3 col-sm-6" ></div>-->
+      <!--<div class="col-lg-3 col-md-3 col-sm-6"></div>-->
+      <!--<div class="col-lg-3 col-md-3 col-sm-6"></div>-->
+
+      <div class="col-lg-offset-6 col-sm-offset-2">1212</div>
+      <div class="row"></div>
+      <div class="row">
+          <div class="col-lg-4 ">lg</div>
+          <div class="col-lg-4 col-lg-pull-2">lg</div>
+      </div>
+      <div class="row">
+          <h1>2323</h1>
+
+          <p class="text-left">Left aligned text.</p>
+          <p class="text-center">Center aligned text.</p>
+          <p class="text-right">Right aligned text.</p>
+          <p class="text-justify">Justified text.</p>
+          <p class="text-nowrap">No wrap text.</p>
+      </div>
+  </div>
+</body>
+</html>
