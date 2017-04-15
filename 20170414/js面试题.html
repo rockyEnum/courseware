@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var arr = [1,3,4];
+    function fn(arr){
+        arr[4] = 1;
+        arr = [1,3];
+    }
+    fn(arr);
+    //所有的自执行函数 this 指向都是window；
+    var num =10;
+    var obj = {
+        num:3,
+        fn:(function (num) {
+            var num;
+            this.num+=3; // window.num+=3; 13
+            num+=2;
+             num =5;//num = 5;
+            return function () {
+                this.num-=1;
+                num-=2;
+                console.log(num)
+
+    }
+    })(this.num)
+    }
+    //  window.num 13 ；  匿名函数里num 5  obj.num = 3
+   // fn    function () {
+    //    this.num-=1;
+    //    num-=2;
+    //    console.log(num)
+    //
+    //    }
+    // 说调用的 this就指向谁
+    var f = obj.fn;
+    //alert(f);
+    f(); //window.f();  window.num 12;   num 3;
+    obj.fn();// obj.num 2; num 1
+    console.log(window.num,obj.num);
+</script>
