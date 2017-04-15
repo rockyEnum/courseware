@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>bootstrap 插件</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container">
+    <input type="button" class="btn btn-primary btn-lg" value="打开弹出框" id="getAlert">
+    <div class="modal" id="myAlert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                   用户名 <input type="text" id="userName">
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-primary" value="关闭" id="close">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+    $(function () {
+          // 初始化后立即调用 show 方法
+        $('#myAlert').on('show.bs.modal', function (e) {
+            $("#userName").val("李四");
+           // return e.preventDefault(); // 阻止模态框的展示
+        })
+        $('#myAlert').on('shown.bs.modal', function (e) {
+//             alert(21)
+            // return e.preventDefault(); // 阻止模态框的展示
+        })
+//        $('#myAlert').on('hide.bs.modal', function (e) {
+//            alert(21)
+//            // return e.preventDefault(); // 阻止模态框的展示
+//        })
+        $('#myAlert').on('hidden.bs.modal', function (e) {
+            alert(21)
+            // return e.preventDefault(); // 阻止模态框的展示
+        })
+        $("#getAlert").click(function(){
+//            $('#myAlert').modal({keyborad:false});
+           // $('#myAlert').modal("show");
+            $('#myAlert').modal('toggle')
+        })
+       $('#close').click(function () {
+           $('#myAlert').modal('toggle')
+       })
+
+    })
+</script>

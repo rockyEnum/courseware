@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<div class="dropdown" id="myDrop" >
+    <button id="dLabel" type="button"  class="btn-primary  " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown trigger
+        <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dLabel">
+       <li>wqwq</li>
+       <li>wqwq</li>
+       <li>wqwq</li>
+    </ul>
+</div>
+<div class="bs-example bs-example-padded-bottom">
+    <a tabindex="0" class="btn btn-lg btn-danger bs-docs-popover" role="button" data-toggle="popover" data-trigger="focus" title="" data-content="And here's some amazing content. It's very engaging. Right?" data-original-title="Dismissible popover"><font class="">可消失的弹出框</font></a>
+</div>
+</body>
+</html>
+<script>
+    //给 用到data-toggle 自定义属性的标签加 默认显示
+    $(".dropdown-toggle").dropdown('toggle')
+    //给下拉列表ul的父级绑定事件的
+$('#myDrop').on('show.bs.dropdown', function () {
+    // do something…
+    alert(1)
+})
+    //隐藏的时候触发
+    $('#myDrop').on('hide.bs.dropdown', function () {
+        // do something…
+        alert("hide")
+    })
+</script>

@@ -1,0 +1,1 @@
+ 模态按钮 属性data-remote="login.html"  打开模态框之前 加载一个地址，然后呢把这个地址里面的内容给覆盖到 <div class="modal-content">  // 通过ajax 请求加载这个地址，然后给这个元素.innerHtml 重新赋值
