@@ -1,0 +1,29 @@
+angular
+  实现的原理是 监听hash变化来动态渲染页面 hash  "#id"
+       MVVM   model 实体(类) view 视图  vm  viewModel  行为
+       mvc    model实体(类)  view 视图  c controller 行为
+
+  内置指令 angular已经提供的东西 自定义指令:手动创建一个指令
+  bootstrap:通过class类col-lg-1 ，通过自定义属性data-toggle 来实现bootstrap一个效果
+  angular：是通过自定义属性 (专业名词:指令)
+  angular作用域
+  指令都是有作用域的  除ng-init之外
+  是在ng-app下面
+   {{}}(绑定) 是一些运算 输出是运算的结果
+   {{}} 等同于 innerText
+   ng-bind 也是绑定 等同于{{}}
+
+   ng-non-bindable 取消绑定
+   ng-bind-template 绑定多个模版
+   ng-init  初始化值 声明多个变量   ng-init="name='韩';age=18"
+   data-ng-init 与 ng-init 等价
+
+   track by $index  解决键重复问题 ng-repeat="d in data  track by $index
+
+   ng-hide  = "true"  才会隐藏
+   ng-show  = "true"  才会显示
+   原理是 通过控制当前元素的display来实现的
+   ng-if  = "true" 才会显示
+   原理是 如果为true  就会把当前元素干掉
+   如果用ng-if 来回控制显示和隐藏的话 反反复复 渲染dom元素  是一个性能问题
+   一般用于 已进入当前路由(页面) 就控制一次dom的就用ng-if

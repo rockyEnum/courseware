@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="">
+<!-- 加货币符号-->
+  <div>{{100 |  currency:"￥"}}</div>
+<div>
+    {{'abc' | uppercase }}
+    {{'ABC' | lowercase }}
+    {{123456 | limitTo:5}}
+    {{(1590122222 | limitTo:3) +'******'+(1590122222 | limitTo:2)}}
+    {{1234.2345|number:2}}
+    {{ 1654325689063  | date:'yyyy/MM/dd'}}
+</div>
+</body>
+</html>

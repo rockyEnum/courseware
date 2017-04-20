@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <style>
+        .class1{
+            background: blue;
+        }
+        .class2{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body  ng-app >
+<!--ng-app 是一个作用域，可以使用angular的一个作用域 -->
+  <div style=""  id="div1">
+      <!--<span>{{1+1}}</span>-->
+      <!--<span ng-bind="1+1"></span>-->
+      <!--<span ng-non-bindable>{{1+1}}</span>-->
+      <!--<span ng-non-bindable ng-bind="1+2"> </span> &lt;!&ndash;不显示ng-bind里面的值&ndash;&gt;-->
+      <!--&lt;!&ndash;多绑定 ng-bind-template&ndash;&gt;-->
+      <!--<span  >{{1}}{{2}}</span>-->
+      <!--<span ng-bind-template="{{1}}{{2}}" ></span>-->
+  </div>
+<!--<div ng-init="name='韩';age=18">-->
+   <!--<span>{{name}}</span>-->
+    <!--<span ng-bind="age"></span>-->
+<!--</div>-->
+<!--<div ng-init="phones={age:1,sex:2,name:'3'}">-->
+    <!--<div ng-repeat="(k,v) in phones">-->
+        <!--<span>{{k}}</span>-->
+        <!--<span>{{v}}</span>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div ng-init="phones={code:1,data:[{name:'韩'},{name:'liu'}]}">-->
+    <!--<div ng-repeat="phone in phones.data " ng-click="test($index)">-->
+        <!--<span>{{$index}}</span>-->
+        <!--&lt;!&ndash;<span>{{phone.name}}</span>&ndash;&gt;-->
+        <!--<span ng-bind="phone.name"></span>-->
+
+    <!--</div>-->
+
+<!--</div>-->
+<!--<div ng-init="data=['苹果','苹果','苹果']">-->
+    <!--<div ng-repeat="d in data track by $index">-->
+        <!--{{d}}-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div style="width: 200px;height: 200px;border: 1px solid" ng-init="flag=false" ng-click="flag=!flag" >  &lt;!&ndash;class="{{flag?'class1':'class2'}}"&ndash;&gt;-->
+    <!--{{flag?'class1':'class2'}}-->
+    <!--<div ng-hide="flag"> 阿斯頓薩達薩達是的</div>-->
+    <!--<div ng-show="flag"> 121212212112</div>-->
+    <!--<div ng-if="flag">我是ng-if</div>-->
+<!--</div>-->
+
+<input type="text" ng-model="sex">
+<div ng-switch="sex">
+    <p ng-switch-when="boy">boy</p>
+    <p ng-switch-when="girl">girl</p>
+    <p ng-switch-default>no person</p>
+</div>
+</body>
+</html>
+<script>
+//    var  data = [{},{},{}];
+//    var dom1= document.getElementById("dom1");
+//    var str =''
+//    for(var i=0;i<data.length;i++){
+//        str+= "<span>"+data.name+"</span>"
+//    }
+//    dom1.innerHTML = str;
+//    var phones={age:7,sex:2,name:'zfpx'};
+//    for( k in phones){
+//        console.log(k);
+//        console.log(phones[k]);
+//    }
+    var str = 1;
+    switch (str){
+        case 1:
+             console.log(1);
+            break;
+        case 2:
+            break;
+        default :
+            console.log(122)
+    }
+</script>

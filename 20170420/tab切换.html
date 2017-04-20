@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <style>
+        span{
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #ccc;
+            background: #ccc;
+        }
+        .active{
+            background:white
+        }
+        .noactive{
+            background:#ccc
+        }
+    </style>
+</head>
+<body ng-app>
+<div ng-init="flag=true" ng-click="flag = !flag">
+    <span  ng-class="{'active':flag,'noactive':!flag}">选项卡一</span><span  ng-class="{'active':!flag,'noactive':flag}">选项卡二</span>
+</div>
+<div ng-show="flag">
+    选项卡一的内容
+</div>
+<div ng-show="!flag" >
+    选项卡二的内容
+</div>
+
+</body>
+</html>
