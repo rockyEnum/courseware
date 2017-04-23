@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="elife">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    <input type="text" ng-model="name">
+</div>
+
+</body>
+</html>
+<script>
+    var elife = angular.module('elife',[]);
+    elife.controller("indexCtrl",['$scope',"$timeout",function ($scope,$timeout) {
+         $scope.name = 12;
+         //$watch监听name的变化 ，name值一旦发生变化，则触发 第一个参数是新值，第二个是就值
+//         $scope.$watch("name",function (newVal,oldVal) {
+//              console.log(oldVal,newVal)
+//         })
+//        setTimeout(function () {
+//            $scope.name=12212121;
+//            $scope.$apply();//强制刷新 让控制器重新通知view
+//        })
+        // 能用angular内置功能/模块的话，一定要用特别是定时器
+       var timer =  $timeout(function () {
+            $scope.name=12212121;
+        })
+       // setInterval =>$interval
+        //删除定时器
+        $interval.cancel(timer);
+       // 原生 清除定时器  clearTimeout()
+    }])
+</script>

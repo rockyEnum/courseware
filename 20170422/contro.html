@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="elife">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+
+</head>
+<body >
+   <div ng-controller="indexCtrl">
+       {{aa}}
+       <div ng-click="getName()">获取</div>
+       <div ng-controller="index2Ctrl">
+            {{aa}}
+       </div>
+       <div id="box"></div>
+   </div>
+</body>
+</html>
+<script>
+    // 什么样的项目应该用angular 频繁操作数据的项目 增删改查的比较适合用angular
+
+    //mvc c都是在m上  v 和 c 数据双向绑定
+    //建立一个数据模型
+    var elife = angular.module('elife',[]);
+    //创建一个控制器
+    //scope 就代表当前的作用域
+    //   app.controller('appCtrl',function($scope){
+    //
+    //   });
+    //run加载比较早，在 加载controller之前进行加载
+    elife.run(function($rootScope){
+        $rootScope.name = 'han'
+    });
+    elife.controller("indexCtrl",["$scope","$rootScope",function ($scope,$rootScope) {
+        console.log(2)
+        //声明的变量只有放在$scope下才能在页面里面使用
+        $scope.name ='index1';
+        console.log($scope)
+        //view controller数据是双向绑定 scope rootscope是不进行双向绑定的  $rootScope 是angualr里面全局的对象
+        $scope.aa  =  $rootScope.name;
+        $scope.getName = function () {
+            alert($rootScope.name)
+        }
+//        var  name = 21;
+    }])
+    elife.controller("index2Ctrl",function ($scope,$rootScope) {
+        console.log(3)
+//        $scope.name ="index2";
+        console.log($scope.$parent.name)
+        //在控制器里面一定不能写操作dom的js 这是一个种规范
+        //在指令里面是可以写js jq 来操作dom
+        //document.getElementById("box").innerText = "index1"
+        //控制器之间的通信 $rootscope  有事件广播，通知机制
+
+
+        $scope.aa = $rootScope.name;
+    })
+</script>

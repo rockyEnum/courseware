@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body ng-app="">
+   <div ng-init="data='abAc'">
+       mvc  model view  contrller （对应的脚本js）
+        {{data | uppercase }}
+       {{1234.2645|number:1}}<!--保留小数点后几位  并且呢四舍五入-->
+       <!--filter 是模糊匹配 只要所有的属性对应的值里面有设置的这个就能匹配上-->
+       <div ng-init="result=[{age:11,name:'liu'},{age:12,name:'2liu2'},{age:18,name:'han'}]">
+          <!--<div ng-repeat="d in result | filter:'liu' ">-->
+              <!--{{d}}-->
+          <!--</div>-->
+           <!-- filter:{name:'han'}  针对name属性的值进行模糊匹配的-->
+           <div ng-repeat="d in result | filter:{name:'liu'} ">
+               {{d}}
+           </div>
+           <div ng-bind="1234.2645|number:1"></div>
+       </div>
+   </div>
+</body>
+</html>
+<script>
+    var abc = angular.uppercase("aaaa"); //转大写
+    console.log(abc);
+    var abc = angular.lowercase("aaaa"); //转小写
+    console.log(abc);
+    //equals 全匹配
+    angular.equals("1","1");
+    angular.equals(1,"1")
+
+    //  ===是判断 类型相等 值相等  == 如果类型不想等进行转成相等的类型 然后在进行判断值是否相等
+
+    //继承 boj1上的属性 深继承  就是会把obj1上的自有的属性都会继承上来
+    var obj = {a:123},obj1 = {a:456,b:{p:{c:1221}}};
+    angular.extend(obj,obj1);
+    console.log(obj);
+
+    //转json 和转json字符串
+    var obj = '{"aa":123,"bb":456}';
+    var a =angular.fromJson(obj);
+    a = angular.toJson(a);
+    console.log(a);
+    // 拷贝(copy深拷贝) 深拷贝 :会重新生成一个引用地址  浅拷贝 公用一个引用地址
+    var obj = {a:123},obj1 = {b:456};
+    angular.copy(obj,obj1);
+    console.log(obj1);
+
+    //angular.bind 会改变函数的this指向  arr 的this指向了obj
+    var obj = {name:2};
+    function arr(who){console.log(this.name+who);}
+    var newArr =  angular.bind(obj,arr,1);
+    newArr();
+</script>
+
