@@ -1,0 +1,16 @@
+.div span,
+.box span {
+  color: red;
+}
+tr .bucket,
+.some-class {
+  color: blue;
+}
+.box2 {
+  width: 100px !important;
+  height: 100px !important;
+  /*如果有样式冲突的话，强制采用.div的*/
+}
+.box3 {
+  border-radius: 12px;
+}

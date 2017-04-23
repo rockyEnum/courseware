@@ -1,0 +1,7 @@
+function home(){
+
+}
+
+function  index() {
+    
+}

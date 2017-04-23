@@ -1,0 +1,69 @@
+/* less 是一个动态的样式表语言，定义了一些方法函数，在开发中写css比较便于维护，扩展
+  css
+*/
+body {
+  font-size: "fnord";
+}
+.head {
+  color: color;
+  background: orange;
+}
+/* 嵌套*/
+.content {
+  color: color;
+  background: orange;
+}
+.content:after {
+  display: block;
+  clear: both;
+  content: '';
+}
+/* 嵌套 冒泡*/
+.slide {
+  border: 1px solid;
+  height: 100px;
+}
+@media screen {
+  .slide {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .slide {
+    width: 500px;
+  }
+}
+/* 加减乘除*/
+.total_sum {
+  width: 398px;
+  height: 30%;
+  color: #CC5257 ;
+  background: #ff1f28;
+}
+.bundle .button {
+  width: 100px;
+  height: 200px;
+}
+.bundle .button :hover {
+  color: blue;
+}
+.header {
+  width: 100px;
+  height: 200px;
+  /*这是一个整体*/
+}
+.header :hover {
+  color: blue;
+}
+/*在最外层去找变量 如果有相同的采用最后一个，在往里一层去找这个变量，采用最里面的*/
+.page {
+  color: blue;
+}
+div {
+  background: url("img/1.jpg");
+  /*img/1.jpg*/
+  color: red;
+}
+span {
+  content: "I am fnord.";
+}
