@@ -11,7 +11,6 @@
 <body >
    <div ng-controller="indexCtrl">
        {{aa}}
-       <select ng-model="name1" ng-options="t.id as t.idname for t in type"></select>
        <div ng-click="getName()">获取</div>
        <div ng-controller="index2Ctrl">
             {{aa}}
@@ -36,7 +35,6 @@
         $rootScope.name = 'han'
     });
     elife.controller("indexCtrl",["$scope","$rootScope",function ($scope,$rootScope) {
-        $scope.type = [{name:'人类',id:1},{name:'动物',id:2},{name:'动物',id:3}]
         console.log(2)
         //声明的变量只有放在$scope下才能在页面里面使用
         $scope.name ='index1';
@@ -44,7 +42,7 @@
         //view controller数据是双向绑定 scope rootscope是不进行双向绑定的  $rootScope 是angualr里面全局的对象
         $scope.aa  =  $rootScope.name;
         $scope.getName = function () {
-            alert($scope.name1)
+            alert($rootScope.name)
         }
 //        var  name = 21;
     }])

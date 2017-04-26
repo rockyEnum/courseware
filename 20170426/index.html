@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+ <div >
+     <a ng-href="{{href}}"  >跳转百度</a>
+     <img ng-src="{{logImg}}" loadImg="xx.png"  alt="">
+ </div>
+
+</body>
+</html>
+<script>
+    var app =angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+        $scope.href = "http://www.baidu.com";
+        $scope.logImg="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"
+    }])
+
+
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-route/angular-route.js"></script>
+    <script src="config.js"></script>
+    <script src="controllers.js"></script>
+</head>
+<body>
+<a href="#/home">首页</a>
+<a href="#/user">用户管理</a>
+<a href="#/contact">联系</a>
+<a href="#/settings/21/我">设置</a>
+<div ng-view></div>  <!--ng-view 是渲染路由对应的html(模版)-->
+</body>
+</html>
+<script>
+
+    //angular的原理 监听hashChange hash改变事件
+
+
+
+
+    app.run(function ($rootScope,$location) {
+        $rootScope.flag = false;
+        $rootScope.$on('$routeChangeStart', function (event,toState,fromState) {
+            if(toState.$$route.originalPath=='/settings'){
+                if(!$rootScope.flag){
+                    $location.path('user');
+                    alert('没有权限自动跳转到用户页面')
+                    event.preventDefault();
+                }
+            }
+        })
+    });
+</script>

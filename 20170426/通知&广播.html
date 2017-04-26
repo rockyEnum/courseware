@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+   <div ng-controller="parentCtrl">
+       <input type="button" value="通知" ng-click="broadcast()">
+         <div ng-controller="childCtrl">
+             <!--<input type="text" ng-model="name">-->
+             <input type="button" value="发射" ng-click="emitToParent()">
+             <select ng-model="name" ng-options="t.id as t.name for t in type">
+
+             </select>
+         </div>
+   </div>
+</body>
+</html>
+<script>
+    //$emit
+    var app =angular.module("app",[]);
+    app.controller("parentCtrl",["$scope","$rootScope",function ($scope,$rootScope) {
+        $scope.name = 12;
+//        $rootScope.$on("name",function (scope,name) {
+//            console.log(arguments)
+//        })
+        var i =100;
+        $scope.broadcast =function (scope,name) {
+            $rootScope.$broadcast("name",i++)
+        };
+    }])
+    app.controller("childCtrl",["$scope","$rootScope",function ($s,$rootScope) {
+//              $scope.emitToParent = function () {
+//                  $rootScope.$emit('name',$scope.name);
+//              }
+        $s.type = [{name:'人类',id:1},{name:'动物',id:2},{name:'动物',id:3}]
+        $rootScope.$on("name",function (scope,name) {
+          $s.name = name;
+            //相关的逻辑
+        })
+    }])
+</script>
