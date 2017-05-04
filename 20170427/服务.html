@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+    <script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+</head>
+<body>
+//服务  共享数据的一个地方 是充当数据共享的一个空间
+<a ui-sref="home">跳转home</a>
+<a ng-href="#/user/11">跳转user</a>
+<div ui-view></div>
+</body>
+</html>
+<script>
+    //Provider  这种服务是唯一一种可以注入到config里面的
+    var app = angular.module("app",["ui.router"]);
+    app.config(function($stateProvider,$locationProvider,myProviderProvider){
+       // console.log(myProvider)
+        $locationProvider.hashPrefix("");
+        $stateProvider.state("home",{
+            url:'/home',
+            templateUrl:'temple1.html',
+            controller:function ($scope,myProvider,myProvider1) {
+                myProvider.name =122112211212;
+               // alert(getName)
+//dom操作    document.getElementById()
+                $scope.name ="a"
+                $scope.goState=function () {
+                    $state.go("user",{id:1})
+                }
+            },resolve:{
+                getName:function () {
+
+                }
+            }
+
+
+        }).state('user',{
+            url:'/user/:id',
+            template:'<div>user</div>',
+            controller:function (myProvider) {
+                  alert(myProvider.name)
+            }
+        })
+    });
+    // 在控制器里注入myProvider 是访问的是$get 函数里面返回的东西
+    app.provider("myProvider",function () {
+        //第一种 可以通过this来实现
+        //在注入my的时候 会实例化这个构造函数  var my = new my();
+//        this.name =12;
+//        this.$get = function () {
+//
+//        }
+        return {
+             $get:function () {
+                return {
+                    name:2,
+                }
+            }
+        }
+        //第二种 通过return 返回对象
+//            return {
+//                name:12,
+//                $get:function () {
+//
+//                }
+
+    });
+    app.provider('myProvider1', function () {
+        this.currency = '￥';
+        this.$get = function () {
+            return {
+                name:1
+        }
+        }
+    });
+</script>

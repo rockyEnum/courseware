@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../node_modules/angular/angular.js"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>指令</title>
+</head>
+<body>
+
+<div ng-controller="indexCtrl">
+    <input type="button" ng-click="getName()" value="获取name">
+    <div name="title1"  title="面板1" my-panel="v1.1.12"></div>
+    <div   name="title2" title="面板2" my-panel="v1.1.12"></div>
+</div>
+
+</body>
+</html>
+<script>
+   //默认情况下 控制器和指令是双向通讯的
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+        $scope.name=1;
+        $scope.getName = function () {
+            alert($scope.name)
+        }
+    }])
+    //命名必须是驼峰式/ my 调用的时候 my-head 这种格式
+    app.directive("myPanel",function () {
+        return{
+            transclude:true,
+            templateUrl:"panel.html",
+            link:function (scope,ele,attr) {
+                //默认情况下scope就是对应的控制器下的scope
+               // scope.name =1221;
+
+                console.log(attr.myPanel)
+//                ele.on("click",function () {
+//                    alert(12)
+//                })
+            }
+        }
+    })
+</script>

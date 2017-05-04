@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../node_modules/angular/angular.js"></script>
+    <title>指令</title>
+</head>
+<body>
+  <!--//自定义指令是一个模版 封装一个html模块 可以对这个模块写dom操作 (dom重绘 回流，绑定事件-->
+ <!--// angular 提供的指令 ng-开头的都是angular提供的指令-->
+<!--// 好处是便于维护，减少代码量，扩展angular  可以根据咱们的业务在写一个复合咱们项目的一些指令-->
+<div my-head="">旧的</div>
+<!--<my-head></my-head>-->
+  <!--<div class="my-head"></div>-->
+<!--my-head-->
+</body>
+</html>
+<script>
+
+    var app = angular.module("app",[]);
+    //命名必须是驼峰式/ my 调用的时候 my-head 这种格式
+    app.directive("myHead",function () {
+        return{
+            transclude:true,//默认是false 不保留  true 可以把之前的内容保留下来 保留在 ng-transclude 区域下
+            restrict:"EA",//默认值EA e element 元素（标签），A 属性  c 类 m 注释
+            template:"<div>sdsdsdsd <span ng-transclude=''></span> </div>"
+        }
+    })
+</script>

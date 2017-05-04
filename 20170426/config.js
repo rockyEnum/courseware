@@ -1,4 +1,13 @@
 var app = angular.module("app",["ngRoute"]);
+app.provider('myProvider', function () {
+    this.currency = '￥';
+    this.$get = function () {
+        return {
+            name:12
+        }
+    }
+
+});
 app.config(function ($routeProvider,$locationProvider) {
     $locationProvider.hashPrefix("");
     $routeProvider.when('/home',{
@@ -13,8 +22,9 @@ app.config(function ($routeProvider,$locationProvider) {
         }
     }).when('/contact',{
         template:'<div>zfpx</div>',
-        controller: function ($scope) {
+        controller: function ($scope,myProvider) {
             $scope.title = 'hello '
+            console.log(myProvider)
         }
     }).when('/settings/:id/:name',{
         templateUrl:"temple1.html",

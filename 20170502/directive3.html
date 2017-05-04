@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../node_modules/angular/angular.js"></script>
+    <title>Title</title>
+</head>
+<body>
+  <div ng-controller="indexCtrl">
+      <input type="button" ng-click="getName()" value="改变title">
+      <div ng-bind="title"></div>
+      <div>{{name}}</div>
+      <div  namestr="name"  my-Head></div>
+
+  </div>
+</body>
+</html>
+<script>
+    //如果一个标签 用多个指令的话，有且只有一个指令才能输出template(Url)
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+        $scope.name=1;
+        $scope.title="我是title";
+        $scope.getName = function () {
+            $scope.title="我是title1122112";
+        }
+    }])
+ //单向绑定: 从控制器>指令 todo 不能从指令影响控制器上面的scope属性
+    app.directive("myHead",function () {
+        return{
+            scope:{
+               // title:"@title" ,//@只读取对应的控制器里的scope属性    如果@后面和 咱们声明的scope.属性保持一直的话，@后面可以省略不写
+      //  @不能绑定函数
+                namestr:'=namestr' //这里的scope里的变量和 在页面里的
+            },
+            template:'<div>  <input type="text" ng-model="namestr"></div>',
+            link:function (scope,ele,attr) {
+                alert(scope.namestr)
+//                 scope.setName = function () {
+//                     scope.name++;
+//                 }
+            }
+        }
+    })
+</script>

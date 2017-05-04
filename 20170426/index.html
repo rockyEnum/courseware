@@ -8,7 +8,8 @@
     <script src="../node_modules/angular/angular.js"></script>
 </head>
 <body>
- <div >
+ <div ng-controller="indexCtrl">
+
      <a ng-href="{{href}}"  >跳转百度</a>
      <img ng-src="{{logImg}}" loadImg="xx.png"  alt="">
  </div>
@@ -17,10 +18,22 @@
 </html>
 <script>
     var app =angular.module("app",[]);
-    app.controller("indexCtrl",["$scope",function ($scope) {
+    app.controller("indexCtrl",["$scope","myProviderProvider",function ($scope,myProviderProvider) {
+        console.log(myProviderProvider)
         $scope.href = "http://www.baidu.com";
         $scope.logImg="https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png"
     }])
+    app.provider('myProvider', function () {
+        this.currency = '￥';
+        this.$get = function () {
+            return {
+                 name:12
+        }
+        }
 
+    });
+    app.config(function (myProviderProvider) {
+      console.log(myProviderProvider)
+    })
 
 </script>

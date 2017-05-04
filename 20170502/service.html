@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>服务</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+  <div ng-controller="indexCtrl">
+      <div ng-controller="secondCtrl"></div>
+  </div>
+</body>
+</html>
+<script>
+    //js 基本数据类型
+    //服务有三种 provider service factory
+    //provider 可以在config配置里面注入
+    //service 返回的是一个构造函数的实例
+    //factory 返回的是obj对象/返回基本数据类型
+    var app = angular.module("app",[]);
+//    app.service("")
+    //创建一个factory服务
+    app.factory("userData",[function () {
+        return 12; //基本数据类型的值都是存放在栈里的
+//      return  {
+//             name:"留",
+//             age:18
+//         }
+    }]);
+//service 如果返回的是基本数据类型 就相当于返回空的对象 如果retrun了一个对象，则这个service的实例指向于return后的对象 ，如果没有return 都是this.创建的属性
+    //那这个service的实例只向于这个this
+    app.service("userData1",[function () {
+         this.name =1;
+         this.age = 18;
+
+    }])
+    app.controller("indexCtrl",["$scope","userData","userData1",'base',function ($scope,userData,userData1,base) {
+        // alert(userData1.name)】
+        base.url = 1221;
+        alert(base.url)
+    }])
+    app.controller("secondCtrl",["$scope","userData","base",function ($scope,userData,base) {
+        alert(base.url)
+       // alert(userData)
+    }])
+    //app.value("baseUrl","http://112.19.203.11/app/")
+    //value constant 是常量 ，一般是用来配置一些基本信息
+//    app.value("base",{
+//        url:"http://112.19.203.11/app/",
+//        defaultImg:"default.png",
+//    })
+    app.constant("base",{
+            url:"http://112.19.203.11/api/",
+            defaultTit:"我赢",
+        })
+</script>
