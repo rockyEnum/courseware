@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    {{name}}-----
+    <div my-person=""></div>
+</div>
+</body>
+</html>
+<script>
+//    require 后面是指向的指令的名字 ，
+
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+
+    }])
+    app.directive("myPerson",function () {
+        return {
+            // scope:true,
+            //replace:true,  //默认 false 如果需要用到replace tempalte(Url) 里对应的标签有且只能有一个根节点
+            template:" <div>{{name}}sdasdasd " +
+            "               <div girl>点击show</div>" +
+            "          </div>",
+            controller:function ($scope) {
+                this.name =12211212;
+                //如果其他指令要用到这个指令上的scope属性的话，需要用this来声明
+                this.show = function () {
+                    alert('alert show')
+                }
+            },
+            controllerAs:"myP",//给myPerson指令里面的controller 指定一个名字叫做myP
+
+        }
+    })
+    app.directive("girl",function () {
+        return {
+            require:"^myPerson",
+            //在link里面可以注入引用的指令里面的控制器（默认情况下控制器的名字是指令的名字+Ctrl后缀 比如 myPersonCtrl） 可以通过controllerAs 来显示声明一个指令里控制器名字
+            link:function (scope,ele,attr,myP) {
+                ele.on("click",function (e) {
+                    myP.show();
+                })
+            }
+          //  template:'<div my-person=""></div>'
+        }
+    })
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+<div ng-controller="indexCtrl">
+    {{name}}-----
+    <div girl  my-person  my-school></div>
+    <div ng-repeat=""></div>
+</div>
+</body>
+</html>
+<script>
+    //$http $q  $timeout $document $location  $filter /自定义过滤器
+//    require 后面是指向的指令的名字 ， ng-click ng-repeat
+//priority:1,//指令的执行顺序参数 从低到高
+// terminal:true,//界点 ，如果在指令上面设置这个属性 其他指令上面小于当前指令上priority值的话 其他指令就不会执行
+    //todo 指令和控制器之间的通讯  通过设置scope:@ =&来实现，或者不写scope 默认就是通讯的
+    //todo 指令和指令之间的通讯 通过require来引用指令，然后在需要的地方比如link controll 里注入 这个指令里的控制器来实现指令和指令通讯
+    //todo 指令与服务之间的通讯 指令在声明的时候，注入服务名字，就实现指令和服务的通讯
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+
+    }])
+
+    app.directive("girl",function () {
+        return {
+             priority:1,//指令的执行顺序参数 从低到搞
+           // terminal:true,//界点 ，如果在指令上面设置这个属性 其他指令上面小于当前指令上priority值的话 其他就不会执行
+            link:function (scope,ele,attr,myP) {
+                 alert("girl")
+            }
+         }
+    })
+app.directive("myPerson",function () {
+    return {
+        // scope:true,
+        //replace:true,  //默认 false 如果需要用到replace tempalte(Url) 里对应的标签有且只能有一个根节点
+        priority:3,
+        link:function (scope,ele,attr) {
+            alert("myPerson")
+        }
+
+    }
+})
+    //指令与服务之间的通讯 ，通过注入服务来实现
+app.directive("mySchool",function (myService) {
+    return {
+        // scope:true,
+        //replace:true,  //默认 false 如果需要用到replace tempalte(Url) 里对应的标签有且只能有一个根节点
+        template:" <div>{{name}}sdasdasd</div>",
+        priority:2, //
+        terminal:true,
+        link:function (scope,ele,attr) {
+            alert(myService.data.index)
+        }
+
+    }
+})
+    app.service("myService",function () {
+        this.data = {index:2}
+    })
+</script>

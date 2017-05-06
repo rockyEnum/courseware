@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="../node_modules/angular/angular.js"></script>
+    <title>Title</title>
+</head>
+<body>
+     <div ng-controller="indexCtrl">
+         {{name}}
+          name1 = {{name1}}
+          <div my-person getname="{{name}}" name1="name1" alert="toAlert()"></div>
+     </div>
+</body>
+</html>
+<script>
+    //单向绑定在标签 属性指向的是一个{{}}绑定后的值
+    //双向绑定，    属性指向的是一个scope变量名scope.name
+    //调用controller函数  属性执向的是一个scope函数的执行 scope.getAlert()
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+        $scope.name = 1;
+        $scope.name1 = 'liu';
+        $scope.toAlert = function () {
+            return "toAlert122121211221";
+        }
+    }])
+    app.directive("myPerson",function () {
+        return {
+            scope:{
+                getname:"@getname",
+                name1:'=',
+                toAlert:'&toalert' //&后面一定跟上一个小写的单词
+            },
+            template:"<div ><input type='button' ng-click='setName()' value='改变name'>{{getName}};name1={{name1}}" +
+            " <input type='button' value='读取&函数' ng-click='myAlert()'></div>",
+            link:function (scope,ele,attr) {
+                console.log(scope.getname);
+                var i =0;
+                scope.setName = function () {
+                   // scope.getName = 122112;
+                    scope.name1 = 'liu+li'+ (i++)
+                }
+                scope.myAlert = function () {
+                    var str =scope.toAlert();
+                    alert(str)
+                }
+            }
+        }
+    })
+</script>

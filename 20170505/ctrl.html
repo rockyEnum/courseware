@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="../node_modules/angular/angular.js"></script>
+</head>
+<body>
+   <div ng-controller="indexCtrl">
+       {{name}}-----
+       <div my-person=""></div>
+   </div>
+</body>
+</html>
+<script>
+    var app = angular.module("app",[]);
+    app.controller("indexCtrl",["$scope",function ($scope) {
+
+    }])
+    app.directive("myPerson",function () {
+        return {
+           // scope:true,
+            //replace:true,  //默认 false 如果需要用到replace tempalte(Url) 里对应的标签有且只能有一个根节点
+            template:" <div>{{name}}</div>",
+            controller:function ($scope) {
+                $scope.name =12211212;
+            },
+            controllerAs:"myPCtrl",
+            compile:function (ele,attr) {
+               console.log(12)
+                return function (scope,ele,attr) {
+                    alert(scope.name)
+                }
+            }
+//            link:function (scope,ele,attr) {
+//
+//            }
+        }
+    })
+</script>
