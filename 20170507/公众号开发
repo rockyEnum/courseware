@@ -1,0 +1,54 @@
+// 公众号，需要关注公众号咱们才能用这个公众号
+比如一下公众号地址
+https://sjyh.lccb.com.cn/dist/?code=021MDwXM1ZLVn21bRJVM11UJXM1MDwXg&state=wx4f577cd3a18f410b#/home/home/0067bba9b6a649c8a328cd3d0aa68635
+地址里面微信会给咱们加 code 参数和state参数
+
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect
+redirect_uri 是咱们项目的地址
+
+//第一步  取出地址里面的参数 code state参数
+//code对应的用户的id
+例如
+  var url = $window.location.href;
+                var reg = /([^?&=#]+)=([^?&=#]+)/g,
+                    obj = {};
+                url.replace(reg, function () {
+                    obj[arguments[1]] = arguments[2];
+                });
+                var code = obj.code;
+                window.state = obj.state;
+// todo 咱们是不能直接去调微信的一些 获取userid  用户信息的一些接口，微信有安全限制，不允许开发人员这么做，只能通过后台去调微信的这些接口
+  //如何获取用户userid
+  //需要后台提供给咱们一个接口 ，这个接口就是获取用户id
+  //这个接口肯定是需要 传递 code state这两个参数
+  //后台会把微信返给他的东西返给咱们
+ // var uid = result.body.data.openid
+
+ //如何获取用户信息呢，有这个userid就行了
+ //需要调后台获取用户信息的接口 把userid这个参数传过去
+
+ //如何使用微信jsapi(拍照，上传图片，分享功能)
+ //第一步 把微信的js引入进来
+      https(http)://res.wx.qq.com/open/js/jweixin-1.0.0.js
+      //需要咱们一个签名验证
+      //这些验证都是后台去验证的，后台需要提供一个获取config配置信息的一个接口
+      //需要把url传过去 (location.href.split('#')[0])
+      //后台给咱们返回签名信息
+      //wx.conf需要的参数就是签名信息，{appId,timestamp,nonceStr,signature} 把这些返回给咱们
+      wx.config({
+          debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+          appId: '', // 必填，公众号的唯一标识
+          timestamp: , // 必填，生成签名的时间戳
+          nonceStr: '', // 必填，生成签名的随机串
+          signature: '',// 必填，签名，见附录1
+          jsApiList: ["onMenuShareAppMessage"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+      });
+
+
+获取到之后 把签名信息注入到config里面
+  wx.config({签名信息})
+  wx.ready(function(){
+    //这个地方，咱们就可以用微信的一些jsapi
+    wx.onMenuShareAppMessage()
+
+  });
