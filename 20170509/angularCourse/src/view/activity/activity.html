@@ -1,0 +1,94 @@
+<!-- 外层包裹区域开始 -->
+<div class="activity-child-wrap parent_flex">
+    <!-- 头部开始 -->
+    <div class="activity-head" style='position: relative;'>
+        <div class="activity-header activity-color-one">
+            <form>
+                <div class="activity-header-search">
+                    <input ng-model="search" ng-keyup="getSearch($event)" class="activity-header-search-input"
+                           type="search" name="" placeholder="请输入关键字" ng-maxlength="20" maxlength="20"/>
+                </div>
+            </form>
+        </div>
+        <div id="swiperActivity" swiper-util
+             class="swiperActivity swiper-container commercial-conTab commercial-color-one commercial-margin-one">
+            <div class="swiper-wrapper">
+                <ul class="swiper-slide" ng-click="changeActivity($event)">
+                    <li _type="0">
+                        <img src="images/index02.png">
+                        <p>亲子</p>
+                    </li>
+                    <li _type="1">
+                        <img src="images/index03.png">
+                        <p>女性</p>
+                    </li>
+                    <li _type="2">
+                        <img src="images/index04.png">
+                        <p>户外</p>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="swiper-pagination"></div>
+            <style type="text/css">
+                .swiper-pagination{ text-align: right !important;}
+                .swiper-container-horizontal > .swiper-pagination-bullets{ bottom: -1px !important;}
+            </style>
+        </div>
+
+        <div class="activity-main activity-color-one" >
+            <p ng-bind="title"></p>
+
+        </div>
+
+    </div>
+    <!-- 头部结束 -->
+    <!-- 内容部分开始 -->
+    <div class="activity-main-section-list activity-main-section"
+        <div class="navigation_conSection navigation_color_one clearfix" ng-repeat="r in data"
+             ng-click="goDetail(r.id,r.activityType)">
+            <div class="navigation_conSection_left fl">
+                <img class="navigation_conSection_left_pic1" ng-src="{{baseImgUrl+r.imageUrl+'/250/250'}}"
+                     default-img="" alt="">
+                <img ng-if=" $index==0 && r.beginTag!=2&&isnNew!=2 " class="navigation_conSection_left_pic2" src="images/index06.png" alt="">
+            </div>
+            <div class="navigation_conSection_right fr" style="display: table">
+                <div style="display: table-cell;vertical-align:middle">
+                    <div class="navigation_conSection_right_top clearfix">
+                        <span class="navigation_conSection_span01" ng-bind-html="r.activityName"></span>
+                        <div class="new_add01" >
+                            <span class="navigation_conSection_span02" ng-if="r.beginTag==1">即将开始</span>
+
+                            <span class="navigation_conSection_span02" ng-if="r.joinTag==1&&r.activityType==1">火热报名</span>
+                            <span class="navigation_conSection_span02" ng-if="r.joinTag==2&&r.activityType==1">报名已满</span>
+                            <span class="navigation_conSection_span02" ng-if="r.beginTag==2&&r.activityType==2">投票已结束</span>
+                            <span class="navigation_conSection_span02" ng-if="r.beginTag==3&&r.activityType==2">投票</span>
+
+                        </div>
+                    </div>
+                    <ul class="navigation_conSection_right_list">
+                        <li class="clearfix">
+                            <img ng-src="images/index08.png" alt="">
+                            <span ng-bind-template="{{ r.beginTime | date:'yyyy.MM.dd'}}- {{ r.endTime | date:'yyyy.MM.dd'}}"></span>
+                        </li>
+                        <li ng-show="r.activityType==1">
+                            <img src="images/index09.png" alt="">
+                            <span ng-bind="r.address"></span>
+                        </li>
+                        <li ng-show="r.activityType==1">
+                            <img src="images/index10.png" alt="">
+                            <span ng-bind="r.sponsor"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <p class="no-search" ng-show="searchDataLen" style="position: static; line-height: 90px; color: #909090; text-align: center; font-size: 18px;">没找到您搜索的活动，换个词试试？</p>
+        <p class="no-search" ng-show="noData"  ng-bind="noDataHtml" style="position: static; line-height: 90px; color: #909090; text-align: center; font-size: 18px;"></p>
+    </div>
+    <!-- 内容部分结束 -->
+
+</div>
+<!-- 外层包裹区域结束 -->
+<!--<div icon-move click-icon></div>-->

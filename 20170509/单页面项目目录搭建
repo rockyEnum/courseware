@@ -1,0 +1,11 @@
+都是以模块进行划分的
+第一种
+   js=>对应的模块文件夹 =>对应的模块里每个页面对应的js(controller)
+   view=>对应的模块文件夹 =>对应的模块里每个页面
+   css=>对应的模块文件夹 =>对应的模块里每个页面的css
+   比如 有一个index.html  view=>home=>indexhtml
+        对应的js路径  js/home/index.js
+        对应的css路径 css/home/index.css
+
+ 第二种
+    一个模块对应文件夹 = 模块下对应的页面文件夹 该页面文件夹里有对应的js 和css html
