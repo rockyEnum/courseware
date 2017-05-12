@@ -1,73 +1,56 @@
 //社区活动主页面
-course.controller("activityCtrl",["$scope",function ($scope) {
-
+course.controller("activityCtrl", ["$scope", "$rootScope", "$http", "$state", function ($scope, $rootScope, $http, $state) {
+    $rootScope.baseImgUrl = 'http://lfbank.strongunion.com.cn/file-store-server-2.0.1/api/';
     $scope.title = '亲子活动'
-    {
-        var result = {
-            "success": true,
-            "errorCode": "-1",
-            "msg": "操作成功",
-            "body": {
-                "data": [{
-                    "id": "3381aaed7bdb43a7985afab3d27fadb4",
-                    "activityName": "岁月无情",
-                    "activityType": "1",
-                    "classify": "1",
-                    "beginTime": "2017-01-07",
-                    "endTime": "2017-01-12",
-                    "address": "俄方温热 日4",
-                    "sponsor": "廊坊银行",
-                    "distance": null,
-                    "imageUrl": "5870fd9ae4b0d40268dc218a",
-                    "remainingPlaces": 15,
-                    "joinTag": null,
-                    "beginTag": "2"
-                }, {
-                    "id": "011cd6159a574ea5b1f85c5447984a69",
-                    "activityName": "新增的社区活动1124",
-                    "activityType": "1",
-                    "classify": "1",
-                    "beginTime": "2016-11-25",
-                    "endTime": "2016-11-29",
-                    "address": "廊坊市新开路1号",
-                    "sponsor": "动1124",
-                    "distance": null,
-                    "imageUrl": "58368449e4b0a7c3ab6c55ac",
-                    "remainingPlaces": 3,
-                    "joinTag": null,
-                    "beginTag": "2"
-                }, {
-                    "id": "844821bd37fe427eaa921277fe291c15",
-                    "activityName": "20161125的活动",
-                    "activityType": "1",
-                    "classify": "1",
-                    "beginTime": "2016-11-24",
-                    "endTime": "2016-11-30",
-                    "address": "20161125的活动",
-                    "sponsor": "20161125的活动",
-                    "distance": null,
-                    "imageUrl": "5837eaf9e4b0f8a26e96fdc6",
-                    "remainingPlaces": 3,
-                    "joinTag": null,
-                    "beginTag": "2"
-                }, {
-                    "id": "ad49157bea33449ba5cb0775ced89710",
-                    "activityName": "超过报名截止日期",
-                    "activityType": "1",
-                    "classify": "1",
-                    "beginTime": "2016-10-01",
-                    "endTime": "2016-10-31",
-                    "address": "上地嘉华大厦",
-                    "sponsor": "仍然",
-                    "distance": null,
-                    "imageUrl": "580da170a59ef32e7fdf0cb2",
-                    "remainingPlaces": 10,
-                    "joinTag": null,
-                    "beginTag": "2"
-                }]
-            }
-        }
+    var typeStr = ["亲子活动", "女性活动", "户外活动"]
+    var param = {url: 'http://lfbank.strongunion.com.cn/microbank/rest/solr/newlyActivity'}
+    param.data = {
+        pageNo: 1,
+        pageSize: 15,
+        officeId: '37484b5b83e7479eaa0ea08c7b196f12',
+        classify:0
+    }
+    getData();
+    $scope.data = [];
+    $scope.goDetail = function (id) {
+        $state.go("activity_detail", {id: id});
+    }
+    function getData() {
+        var url = addQueryString(param.url, param.data)
+        $http({
+            method: "get",
+            url: url
+        }).then(function (result) {
+            $scope.data = result.data.body.data;
+        })
     }
 
-    $scope.data = result.body.data;
+    $scope.changeActivity = function ($event) {
+        var target = $event.target;
+        var typeName = target.tagName;
+        var parent;
+        if (typeName == "IMG" || typeName == "P") {
+            parent = target.parentNode;
+        } else {
+            parent = target;
+        }
+        var _tp = parent.getAttribute("_type");
+        $scope.title = typeStr[_tp]
+        param.data.classify = _tp;
+        getData();
+    }
+    //拼接url的queryString部分
+    function addQueryString(url, data) {
+        var str = ''; //'str1=1&'
+        for (var k in data) {
+            if (data.hasOwnProperty(k)) {
+                str += k + '=' + data[k] + '&';
+            }
+        }
+        if (str) {
+            url += url.indexOf('?') === -1 ? '?' : '&';
+        }
+        str = url + str.substr(0, str.length - 1)
+        return str;
+    }
 }])

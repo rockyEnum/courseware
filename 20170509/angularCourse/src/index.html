@@ -9,9 +9,11 @@
     <script src="../node_modules/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="js/router.min.js"></script>
     <script src="js/controller.min.js"></script>
+    <script src="js/service.min.js"></script>
     <title>Title</title>
 </head>
-<body>
-  <div ui-view></div>
+<body ng-controller="mainCtrl">
+<div ui-view></div>
+<div ng-show="!isHome" ng-click="goHome()"  class="ng-isolate-scope"><div style="position: fixed; z-index: 9999; width: 3rem; height: 3rem; left: 194px; top: 168px;" id="iconMove"><img src="images/index11.png" alt=""></div></div>
 </body>
 </html>

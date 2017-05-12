@@ -5,7 +5,7 @@ app.controller("indexCtrl",["$scope","$filter","$http","httpService",function ($
     //     console.log(result)
     // }
     //defer用法
-    httpService.http({url:"../20170412/bootstrap.txt"}).then(function (result) {
+    httpService.http({url:"/bootstrap.txt"}).then(function (result) {
         console.log(result)
     })
     alert(12)
