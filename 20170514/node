@@ -1,0 +1,39 @@
+node 使用的语言就是js 它是运行在服务器上的
+运行在 Chrome V8 引擎 (c++)的运行环境
+服务器端语言
+后台语言:可以操作io（文件）事件驱动的，使其轻量又高效。
+        (node        还可以做中间件【中间件就是处理逻辑的】)
+        操作数据库 ，
+        （js没有兼容性）
+         有进程线程
+
+在页面里面写js的时候，很多兼容性,因为不同浏览器不同版本支持js不一样
+在webstrom 配置node file -setting - languages& fromeworks -》nodejs and npm 可以配置node
+
+js
+在前端  ESjavascript
+ 全局对象是window
+ 提供的数据对象 String Number Math Date Error  reg(正则)  function Object Array Boolean
+ // 主要的操作就是 BOM DOM
+ //在前端不能直接使用es6语法 很多浏览器(版本)都支持的不到位
+
+在node里面
+  es的原生对象都有
+  node的一些核心对象
+  //一些第三方对象
+ //支持所有的es语法(es5 es6)
+  node  好处是：v8引擎 执行速度特别快
+  //前后端统一了 es语法 （全栈工程师）
+  单线程逻辑处理
+  非阻塞 异步操作(io)
+  是靠事件驱动的
+
+  //http
+  //url
+  //fs 操作文件的(io)
+  //queryString 对url参数处理的一个模块
+  //path  处理文件路径的
+
+ // node 模块化的结构  引用文件 是以模块的形式引用的 (require思想)
+    模块的根本就是一个对象 把这个对象返回出去 module.exprots
+
