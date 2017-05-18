@@ -6,13 +6,13 @@ var	uglify = require('gulp-uglify');
 //合并控制器任务
 gulp.task('controller',function () {
     return gulp.src("src/js/controller/**/*.js")
-        .pipe(uglify())
+      //  .pipe(uglify())
         .pipe(concat("controller.min.js"))
         .pipe(gulp.dest("dist/js"))
 })
 gulp.task('router',function () {
     return gulp.src("src/js/router.js")
-        .pipe(uglify())
+     //   .pipe(uglify())
         //.pipe(concat("controller.min.js"))
         .pipe(rename("router.min.js"))
         .pipe(gulp.dest("dist/js"))
@@ -21,7 +21,7 @@ gulp.task('router',function () {
 gulp.task('service',function () {
     return gulp.src("src/js/service.js")
     //.pipe(concat("controller.min.js"))
-        .pipe(uglify())
+       // .pipe(uglify())
         .pipe(rename("service.min.js"))
         .pipe(gulp.dest("dist/js"))
 })

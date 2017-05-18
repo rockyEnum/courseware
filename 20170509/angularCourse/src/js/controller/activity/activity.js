@@ -1,5 +1,5 @@
 //社区活动主页面
-course.controller("activityCtrl", ["$scope", "$rootScope", "$http", "$state", function ($scope, $rootScope, $http, $state) {
+course.controller("activityCtrl", ["$scope", "$rootScope", "$http", "$state",'httpService', function ($scope, $rootScope, $http, $state,httpService) {
     $rootScope.baseImgUrl = 'http://lfbank.strongunion.com.cn/file-store-server-2.0.1/api/';
     $scope.title = '亲子活动'
     var typeStr = ["亲子活动", "女性活动", "户外活动"]
