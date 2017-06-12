@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+我是通过node服务响应到浏览器的页面
+<input type="button" value="获取服务器时间" onclick="getclock()">
+<span id="span1"></span>
+</body>
+</html>
+<script>
+    //获取服务器时间
+    function getclock() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState ==4 && xhr.status ==200){
+                 document.getElementById("span1").innerText = JSON.parse(xhr.responseText).date;
+            }
+        }
+        xhr.open('get','/clock');
+        xhr.send(null);
+    }
+</script>

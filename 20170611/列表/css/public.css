@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul, li {
+    list-style: none;
+}
+
+input {
+    display: block;
+    outline: none;
+}
+
+span {
+    display: block;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    font-size: 14px;
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    -webkit-user-select: none;
+}
+
+/*--index start--*/
+.box {
+    margin: 20px auto;
+    padding: 20px;
+    width: 800px;
+    border: 2px solid green;
+    overflow: hidden;
+}
+
+.box h2 {
+    height: 35px;
+    line-height: 35px;
+    color: #fff;
+    font-size: 18px;
+    background: green;
+}
+
+.box h2 span, .box .list span {
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+.box .list {
+    height: 350px;
+}
+
+.box .list li {
+    height: 35px;
+    line-height: 35px;
+    cursor: pointer;
+}
+
+.box .list li:nth-child(even) {
+    background: #eee;
+}
+
+.box .list li:hover {
+    background: #E0F2BE;
+}
+
+.box .page {
+    float: right;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.box .page span, .box .page ul, .box .page input {
+    float: left;
+}
+
+.box .page span, .box .page input, .box .page ul li {
+    margin-left: 5px;
+    width: 45px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid green;
+}
+
+.box .page ul li {
+    float: left;
+    width: 20px;
+}
+
+.box .page ul li.bg {
+    background: green;
+    color: #fff;
+}
+
+/*--detail start--*/
+.detailBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    width: 300px;
+    height: 200px;
+    border: 1px dashed green;
+}
+
+.detailBox div {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.detailBox div:nth-child(even) {
+    background: #eee;
+}
+
+.detailBox div span {
+    float: left;
+}
+
+.detailBox div span.one {
+    width: 100px;
+}
+
+.detailBox div span.two {
+    width: 200px;
+    text-align: left;
+}
