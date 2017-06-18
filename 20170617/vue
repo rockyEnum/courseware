@@ -1,0 +1,17 @@
+vue 结合angular和react的特点来实现的一个mvvm框架;
+vue 绑定渲染特别快和react一样
+是虚拟dom渲染
+加载vue的时候呢，把页面的结构呢在js里有对应的一套，有一套渲染的算法(把渲染的dom最小化)
+dom渲染 特别耗性能
+
+可以用bower 来查看vue的历史版本
+ //npm install bower
+ npm install xx //下载资源不加版本号的时候默认采用最新的版本
+
+
+ vue1 和vue2的不同处
+ 1:单次绑定不一样 vue2是通过v-once  vue1是通过* {{*msg}}
+ 2:运算 在vue1里面也没有实现
+ 3:绑定html不同 vue1是通过{{{html}}}绑定 vue2 是通过v-html
+ 4 v-for不同 vue1里面 如果arr里有重复项的话，比如下track by='$index'
+ 

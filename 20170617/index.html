@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+<div id="app">
+    {{msg}}
+    <input type="text" v-model="num">
+    {{num}}
+    <!--//三元运算符-->
+    {{ Number(num)>10?'超过10次了':num  }}
+
+    <!--<div v-once>单次绑定{{num}}</div>-->
+    <!--vue1里面的写法 <div>单次绑定{{*num}}</div>-->
+    <div v-html="bindhtml"></div>
+    <!--vue1里面b绑定html写法 <div>{{{bindhtml}}}</div>-->
+
+
+</div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'绑定',
+            num:'初始值',
+            bindhtml:'<h1>h1</h1>'
+        }
+    })
+</script>

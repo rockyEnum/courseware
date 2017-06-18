@@ -5,6 +5,7 @@ var server = http.createServer(function (req, res) {
     var urlObj = url.parse(req.url, true),
         pathname = urlObj.pathname,
         query = urlObj.query;
+    console.log(1)
 
     //->静态资源文件(HTML/CSS/JS...)的处理
     var reg = /\.(HTML|JS|CSS|TXT|JSON|PNG|JPG|BMP|GIF|ICO)/i;
@@ -67,22 +68,22 @@ var server = http.createServer(function (req, res) {
         return;
     }
 
-    if (pathname === "/getInfo") {
-        var id = query["id"] || 0,
-            curData = null;
-        temp = JSON.parse(fs.readFileSync(rootPath, "utf-8"));
-        for (i = 0; i < temp.length; i++) {
-            if (temp[i]["id"] == id) {
-                curData = temp[i];
-                break;
-            }
-        }
-        res.writeHead(200, {'content-type': 'application/json;charset=utf-8;'});
-        res.end(JSON.stringify({
-            code: curData ? 0 : 1,
-            data: curData
-        }));
-    }
+    // if (pathname === "/getInfo") {
+    //     var id = query["id"] || 0,
+    //         curData = null;
+    //     temp = JSON.parse(fs.readFileSync(rootPath, "utf-8"));
+    //     for (i = 0; i < temp.length; i++) {
+    //         if (temp[i]["id"] == id) {
+    //             curData = temp[i];
+    //             break;
+    //         }
+    //     }
+    //     res.writeHead(200, {'content-type': 'application/json;charset=utf-8;'});
+    //     res.end(JSON.stringify({
+    //         code: curData ? 0 : 1,
+    //         data: curData
+    //     }));
+    // }
 });
 server.listen(1800, function () {
     console.log("server is success,listening on 180 port!");
