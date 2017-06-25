@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+ <div id="app" v-if="flag">
+     <div v-if="flag">asdasdasdasd</div>
+     <input type="text" ng-model="name">
+     <input type="button" @click="flag=!flag" value="点击">
+ </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+          name:'',
+            flag:true
+        },
+        beforeCreate:function () {
+            alert("创建之前")
+//            console.log(arguments)
+        },created:function () {
+            alert('实例之后')
+            console.log(arguments)
+        },beforeUpdate:function(){
+          //  alert('更新之前')
+        },updated:function () {
+           // alert('更新之后')
+             this.$destroy();//销毁组件
+              console.log(arguments)
+        },beforeDestroy:function () {
+            alert("销毁之前")
+        },destroyed:function () {
+            alert("销毁之后")
+        }
+    })
+</script>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <!--npm install vue-resource-->
+    <!--get post put delete header options -->
+    <!-- resfull架构风格的才需要后面的-->
+    <!--包括 HTTP GET、POST、PUT、DELETE，还可能包括 HEADER 和 OPTIONS。-->
+</head>
+<body>
+   <div id="app">
+       <input type="button" value="获取数据" @click="getJsonpData">
+   </div>
+</body>
+</html>
+<script>
+    /*http://localhost:63342/getlist*/
+   new Vue({
+       el:'#app',
+       data:{
+           msg:"数据"
+       },
+       methods:{
+           getData:function () {
+                  this.$http.get('/getlist').then(function (result) {
+                      console.log(result)
+                  })
+           },getPostData:function () {
+               this.$http.post({url:'/getlist',data:{},asyn:false}).then(function () {
+                   
+               })
+           },
+           getJsonpData:function () {
+               this.$http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",{params:{wd:'韩信'}, jsonp:'cb'}).then(function(result){
+                   console.log(result)
+               })
+           }
+       }
+   })
+</script>

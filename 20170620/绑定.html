@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>绑定</title>
+    <style>
+        img{
+            width:100px;
+            height: 100px;
+
+        }
+        .class1{
+            text-align: center;
+            color: red;
+            font-size: 20px;
+        }
+        .class2{
+
+        }
+    </style>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+  <div id="app">
+      <img v-bind:src="picPath" alt="">
+      <a :href="picPath">查看大图</a>
+      <div :class="{class1:flag}" @click="changeClass()">绑定class</div>
+      <div :class="['class1','class2']">绑定class</div>
+      <div :class="classArr">动态绑定class列表</div>
+      <!--绑定style-->
+      <div :style="{background:'red',fontSize:'100px'}">welcome zf</div>
+  </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            picPath:"https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1497963750&di=d8f9834a481a78b8fc96cc350ceb3055&src=http://pic.58pic.com/58pic/14/27/45/71r58PICmDM_1024.jpg",
+            flag:false,
+            classArr:['class1','class2']
+        },
+        methods:{
+            changeClass:function () {
+                 this.flag = this.flag?false:true;
+            }
+        }
+    })
+</script>

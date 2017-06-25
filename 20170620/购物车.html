@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>购物车</title>
+    <style>
+        .divBg{
+            background: rgba(171, 76, 82, 1);color:white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+   <div id="app">
+       <table border="1" cellpadding="0" cellspacing="0">
+           <thead>
+              <td>商品名字</td>
+              <td>商品价格</td>
+              <td>操作</td>
+           </thead>
+           <tbody>
+               <tr v-for="(item,index) in shopArr">
+                   <td>{{item.name}}</td>
+                   <td>{{item.price}}</td>
+                   <td><input type="button" class="divBg" value="删除" @click="curShopDel(index)"></td>
+               </tr>
+
+           </tbody>
+       </table>
+       <div class="divBg" @click="curShopDel" style="width:100px">删除全部</div>
+   </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            shopArr:[{id:'1',name:'商品1',price:'6777'},{id:'2',name:'商品2',price:'6777'},{id:'3',name:'商品3',price:'6777'}]
+        },
+        methods:{
+           curShopDel:function(index){
+               //如果传的是数字，代表是有索引的，是删除某一条数据的
+                if(typeof index==='number'){
+                    this.shopArr.splice(index,1)
+                }else{
+                    this.shopArr = [];
+                }
+
+           }
+        }
+    })
+</script>

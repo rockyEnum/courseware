@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+<div id="app">
+    <button @click="myclick">{{counter}}</button>
+</div>
+<div id="example"></div>
+</body>
+</html>
+<script>
+   var vm = new Vue({
+        el:'#app',
+        data: {
+            msg: 'msg数据',
+            counter:0
+        },methods:{
+            myclick:function () {
+                // alert(this.msg)
+                this.counter++;
+
+            }
+        }
+    })
+   //监听数据变化
+   vm.$watch("counter",function (n,o) {
+       console.log(n,o)
+       
+   })
+   //vm.$log() 打印data   2.0已移除
+    console.log(vm);
+    //手动挂载
+    var vm1 = new Vue({
+        data:{
+
+        },methods:{
+
+        }
+    });
+   //手动挂载
+    vm1.$mount("#example")
+</script>

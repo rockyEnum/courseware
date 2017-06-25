@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+  <div id="app">
+      <input type="text" @keydown.tt="cancel">
+  </div>
+</body>
+</html>
+<script>
+    //自定义键盘事件
+// vue1.0写法   Vue.directive('on').keyCodes.tt=13;
+ Vue.config.keyCodes.tt= 13;
+    new Vue({
+        el:'#app',
+        methods:{
+            cancel:function () {
+                alert('按下回车键')
+            }
+        }
+    })
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>v-for</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+    <div id="app">
+       <!--<div v-for="item in arr">-->
+
+           <!--{{item.id}}   {{arr.title}}-->
+       <!--</div>-->
+
+        <div v-for="(v,k) in arr[0]">
+
+          {{v}}
+        </div>
+    </div>
+</body>
+</html>
+<script>
+     new Vue({
+         el:'#app',
+         data:{
+             arr:[{id:'1',title:'用户1',name:'王五'},{id:'1',title:'用户1',name:'王五'}]
+         }
+     })
+</script>

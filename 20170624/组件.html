@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+ <div id="app">
+     <child :data1="msg"></child>
+     <!--<child></child>-->
+     <!--<child></child>-->
+     <!--<child></child>-->
+ </div>
+</body>
+</html>
+<script>
+    //全局的组件
+//    Vue.component('child',{
+//        template:"<div>sdsdsd</div>"
+//    })
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'msg数据'
+        },
+        components:{
+            child:{
+                template:"<div>我是局部的{{data}}</div>",
+                props:['data1'],
+                data:function(){
+                    return {data:this.data1+1212}
+                }
+            }
+        }
+    })
+</script>

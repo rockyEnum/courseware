@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>自定义过滤器</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+ <div id="app">
+     {{price | myprice('2','param2')}}
+ </div>
+</body>
+</html>
+<script>
+    //过滤器:有全局过滤器和局部过滤器
+    //全局的过滤器一定要在实例话Vue的时候进行添加
+//    Vue.filter('myprice',function (input,param) {
+//        console.log(input);//110
+//        console.log(param);
+//
+//        return input>90?"优秀":"良好";
+//    });
+    new Vue({
+        el:'#app',
+        data:{
+            price:100
+        },
+        filters:{
+            //局部过滤器 从第二个往后都是参数
+            myprice:function (input,param,param2) {
+                console.log(input);//110
+                console.log(param);
+                console.log(param2);
+
+                return input>90?"优秀":"良好";
+            }
+        }
+    })
+
+</script>

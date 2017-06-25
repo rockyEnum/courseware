@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue1.js"></script>
+</head>
+<body>
+   <div id="app">
+       hello   {{'hello' | capitalize}} <!--首字母大写-->
+       hello   {{'hello' | uppercase}} <!--转成大写-->
+       Hello   {{'Hello' | lowercase}} <!--转成小写-->
+       {{110 | currency '￥' 2 }}<!--货币转换器-->
+       {{110.1292 | currency '￥' 2 }}<!--货币转换器 有四舍五入-->
+       <!--{{3 | pluralize '女' '男' '人妖'}}-->
+       <!--&lt;!&ndash;//除了1以外都复数 1 采用第一项&ndash;&gt; 不符合条件的都是最后一项-->
+       <!--{{0 | pluralize '女' '男' '人妖'}} &lt;!&ndash;//'人妖'&ndash;&gt;-->
+       <!--{{1 | pluralize '女' '男' '人妖'}} &lt;!&ndash;//'女'&ndash;&gt;-->
+       {{11 | pluralize '女' '男' '人妖' '升级人妖'}} <!--//'女'-->
+       <!--1-9  11 -19  以此类推-->
+       <!--todo 事件延迟时间 debounce -->
+       <input type="text" @keydown.13="cancel() | debounce 5000">
+       <!--显示前两条 -->
+       <div v-for="v in arr | limitBy 2">
+           {{v}}
+       </div>
+
+       <div v-for="v in arr | filterBy '第二项'">
+           {{v}}
+       </div>
+       <!--根据某一个属性值进行过滤数据-->
+       <div v-for="v in arrObj | filterBy 'han2' in 'name'">
+           {{v.name}}
+       </div>
+   </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            arr:['第一项','第二项','第三项'],
+            arrObj:[{id:1,name:'han0'},{id:1,name:'han1'},{id:1,name:'han2'}]
+        },
+        methods:{
+            cancel:function () {
+                alert(12)
+            }
+        }
+    })
+</script>

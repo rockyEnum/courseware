@@ -1,0 +1,24 @@
+事件
+绑定事件 v-on:事件名 (v-on:click="绑定的函数")
+简写形式:@事件名 (@click="myclick()");
+//阻止事件冒泡 通过@click.stop = "myclick()"
+//阻止事件的默认行为 通过@click.prevent="myLink()"
+//同时阻止事件冒泡和事件默认行为 @click.prevent.stop ="myLink()"
+如果需要用到event对象 ，需要咱们在绑定的时候手动传递参数$event
+
+控制显示和隐藏
+v-if 和v-show  true false 显示和隐藏
+v-show 是通过控制元素的display属性来实现显示和隐藏
+v-if 是通过移除元素来实现的
+//当仅仅需要第一次绑定数据的时候来控制显示和隐藏 ，这时候咱们可以用v-if
+//当元素操作比较频繁的时候，咱们就用v-show
+
+键盘事件
+回车事件 @keydown.13   @keydown.13= "fun"
+上下左右键盘事件  @keydown.up @keydown.down @keydown.left @keydown.right
+
+//绑定
+v-bind:属性名
+简写形式:   :属性名  (:src)
+绑定class  :class="{class1:true}" 为true的情况下绑定class1
+如果想绑定多个class列表 通过绑定数据的行水:class="['class1','class2']"

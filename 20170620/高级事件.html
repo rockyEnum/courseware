@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>键盘事件</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+  <div id="app">
+      <input type="text" @keydown.13="mykeyDown" @keydown.left="myLeft()" @keydown.right="myRight()" @keydown.up="myUp()" @keydown.down="myDown()">
+  </div>
+</body>
+</html>
+<script>
+     new Vue({
+         el:'#app',
+         methods:{
+             mykeyDown:function () {
+                 alert(12)
+             },
+             myLeft:function () {
+                 console.log("向左")
+             },
+             myRight:function () {
+                 console.log("向右")
+             },
+             myUp:function () {
+                 console.log("向上")
+             },
+             myDown:function () {
+                 console.log("向下")
+             }
+         }
+     })
+</script>

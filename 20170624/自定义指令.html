@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=noe, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Title</title>
+    <script src="js/vue2.js"></script>
+</head>
+<body>
+ <div id="app">
+     <div v-red-d=""></div>
+ </div>
+</body>
+</html>
+<script>
+    //创建全局的指令
+    //v1.0里面 this 是直接拿过来用就行了
+//    Vue.directive('red',function () {
+//        this.el.style.background = 'red';
+//    });
+   //驼峰式规则  遇见大写的进行分开 v-red-d
+//    Vue.directive('redD',function (el,binding) {
+//        el.style.background = 'red';
+//        el.style.height='200px'
+//    });
+    //局部指令
+    new Vue({
+        el:'#app',
+        directives:{ //私有的指令
+            redD:function (el,binding) {
+                el.style.background = 'blue';
+                el.style.height='200px'
+                        console.log(el)
+                        console.log(binding)
+                    }
+        },
+        methods:{
+
+        }
+    })
+</script>
